@@ -74,25 +74,32 @@ Then open **http://localhost:8000** in your browser. Press `Ctrl + C` in Termina
 
 ---
 
-## 🚀 Publish it to the web (free)
+## 🚀 Publishing & updates (GitHub → Netlify)
 
-Any static host works. Easiest options:
+This site is set up for **continuous deployment**:
 
-### Option A — Netlify Drop (no account math, ~30 seconds)
-1. Go to **https://app.netlify.com/drop**
-2. Drag the whole `lexington-events` folder onto the page.
-3. It gives you a live URL instantly. To update later, drag the folder again.
+- **Repository:** https://github.com/louigene-cpu/lexington-events
+- **Live site:** https://lexevents.netlify.app/
+- Netlify is linked to the `main` branch. **Any push to `main` deploys automatically** — no build step, no manual upload.
 
-### Option B — GitHub Pages (free, custom-domain friendly)
-1. Create a GitHub repo and upload these files.
-2. Repo **Settings → Pages →** deploy from `main` branch, root folder.
-3. Your site goes live at `https://<username>.github.io/<repo>/`.
+### The update workflow
 
-### Option C — Vercel
-1. Install the Vercel CLI or connect the folder at https://vercel.com.
-2. It auto-detects a static site — no configuration needed.
+```bash
+cd ~/Downloads/lexington-events
+# 1. edit events.js (add next month's events)
+git add events.js
+git commit -m "Add September 2026 events"
+git push
+# ...Netlify publishes the update in ~30 seconds.
+```
 
-A custom domain (e.g. `lexingtonevents.com`) can be pointed at any of these.
+That's the whole loop: **edit → commit → push → live.** (Claude can do these steps for you — just ask.)
+
+> The old manual method — dragging the folder onto Netlify's Deploys tab — still
+> works as a fallback, but with Git linked you shouldn't need it.
+
+A custom domain (e.g. `lexingtonevents.com`) can be added in Netlify under
+**Domain management** and will serve the same auto-deployed site.
 
 ---
 
