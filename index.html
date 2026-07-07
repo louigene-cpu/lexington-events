@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lexington Events — Discover Local Culture</title>
+  <meta name="description" content="A monthly guide to live music, festivals, comedy, community and arts events happening around Lexington, Kentucky." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Social sharing preview -->
+  <meta property="og:title" content="Lexington Events — Discover Local Culture" />
+  <meta property="og:description" content="Your monthly guide to live music, festivals, comedy, community and arts events around Lexington, Kentucky." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site">
+    <div class="wrap site-inner">
+      <div class="brand">
+        <h1>Lexington Events</h1>
+        <span class="tag" id="brandTag">Discover Local Culture</span>
+      </div>
+      <div class="header-actions">
+        <button class="btn" id="btnExport"></button>
+        <button class="btn icon" id="btnTheme" title="Toggle light / dark"></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- INTRO -->
+    <section class="intro">
+      <p class="lead">Your monthly guide to what's happening around Lexington — live music,
+        festivals, comedy, community gatherings and more. Tap any event for details, times and tickets.</p>
+    </section>
+
+    <!-- MONTH NAV -->
+    <div class="monthnav">
+      <button class="btn icon" id="btnPrev" title="Previous month"></button>
+      <h2 id="monthTitle">Month</h2>
+      <button class="btn icon" id="btnNext" title="Next month"></button>
+      <button class="btn" id="btnToday" title="Jump to current month"></button>
+      <span class="count-pill" id="countPill">0 events</span>
+    </div>
+
+    <!-- TOOLBAR: view toggle + filters -->
+    <div class="toolbar">
+      <div class="viewtoggle">
+        <button id="btnCal" class="active"></button>
+        <button id="btnList"></button>
+      </div>
+      <div class="filters" id="filters"></div>
+    </div>
+
+    <!-- WEEK-LONG EVENTS BANNER (auto-populated) -->
+    <div id="multiBanner"></div>
+
+    <!-- VIEW -->
+    <div id="viewHost"></div>
+
+    <!-- FOOTER -->
+    <footer class="site">
+      <div class="foot-grid">
+        <div>
+          <h4>Lexington Events</h4>
+          <p>A free community resource, refreshed every month. Found an event we're missing?
+             Let us know and we'll add it.</p>
+        </div>
+        <div class="sources">
+          <a href="https://www.talonwine.com/events/" target="_blank" rel="noopener">Talon Winery</a>
+          <a href="https://equusrunvineyards.com/" target="_blank" rel="noopener">Equus Run Vineyards</a>
+          <a href="https://gattonpark.org/events/" target="_blank" rel="noopener">Gatton Park</a>
+          <a href="https://mirrortwinbrewing.com/" target="_blank" rel="noopener">Mirror Twin Brewing</a>
+          <a href="https://www.comedyoffbroadway.com/" target="_blank" rel="noopener">Comedy Off Broadway</a>
+          <a href="https://www.visitlex.com/events/" target="_blank" rel="noopener">VisitLEX</a>
+        </div>
+      </div>
+      <p class="foot-note">Events are gathered from official venue and tourism sources. Always confirm details with the venue before you go.</p>
+    </footer>
+  </main>
+
+  <!-- MODAL -->
+  <div class="overlay" id="overlay">
+    <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <!-- Data first, then app -->
+  <script src="events.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

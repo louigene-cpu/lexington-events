@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Local deploy bundles (built from the source files, no need to track)
+*.zip

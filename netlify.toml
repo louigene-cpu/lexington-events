@@ -1,0 +1,6 @@
+# Netlify configuration for the Lexington Events site.
+# This is a plain static site (HTML/CSS/JS) with no build step — Netlify just
+# publishes the files in the repository root.
+[build]
+  publish = "."
+  command = ""
