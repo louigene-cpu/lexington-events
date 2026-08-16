@@ -38,33 +38,50 @@
   <main class="wrap">
     <!-- INTRO -->
     <section class="intro">
-      <p class="lead">Your monthly guide to what's happening around Lexington — live music,
+      <p class="lead" id="leadText">Your monthly guide to what's happening around Lexington — live music,
         festivals, comedy, community gatherings and more. Tap any event for details, times and tickets.</p>
     </section>
 
-    <!-- MONTH NAV -->
-    <div class="monthnav">
-      <button class="btn icon" id="btnPrev" title="Previous month"></button>
-      <h2 id="monthTitle">Month</h2>
-      <button class="btn icon" id="btnNext" title="Next month"></button>
-      <button class="btn" id="btnToday" title="Jump to current month"></button>
-      <span class="count-pill" id="countPill">0 events</span>
+    <!-- SECTION NAV: Events vs Restaurants -->
+    <div class="sectionnav">
+      <button id="navEvents" class="active"></button>
+      <button id="navFood"></button>
     </div>
 
-    <!-- TOOLBAR: view toggle + filters -->
-    <div class="toolbar">
-      <div class="viewtoggle">
-        <button id="btnCal" class="active"></button>
-        <button id="btnList"></button>
+    <!-- ===================== EVENTS SECTION ===================== -->
+    <div id="eventsSection">
+      <!-- MONTH NAV -->
+      <div class="monthnav">
+        <button class="btn icon" id="btnPrev" title="Previous month"></button>
+        <h2 id="monthTitle">Month</h2>
+        <button class="btn icon" id="btnNext" title="Next month"></button>
+        <button class="btn" id="btnToday" title="Jump to current month"></button>
+        <span class="count-pill" id="countPill">0 events</span>
       </div>
-      <div class="filters" id="filters"></div>
+
+      <!-- TOOLBAR: view toggle + filters -->
+      <div class="toolbar">
+        <div class="viewtoggle">
+          <button id="btnCal" class="active"></button>
+          <button id="btnList"></button>
+        </div>
+        <div class="filters" id="filters"></div>
+      </div>
+
+      <!-- WEEK-LONG EVENTS BANNER (auto-populated) -->
+      <div id="multiBanner"></div>
+
+      <!-- VIEW -->
+      <div id="viewHost"></div>
     </div>
 
-    <!-- WEEK-LONG EVENTS BANNER (auto-populated) -->
-    <div id="multiBanner"></div>
-
-    <!-- VIEW -->
-    <div id="viewHost"></div>
+    <!-- ===================== RESTAURANTS SECTION ===================== -->
+    <div id="restaurantsSection" hidden>
+      <div class="rest-toolbar">
+        <div class="filters" id="cuisineFilters"></div>
+      </div>
+      <div id="restaurantGrid"></div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="site">
@@ -94,6 +111,7 @@
 
   <!-- Data first, then app -->
   <script src="events.js"></script>
+  <script src="restaurants.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

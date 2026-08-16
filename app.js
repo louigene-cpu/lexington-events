@@ -26,15 +26,20 @@
     link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
     info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>',
+    cal2: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>',
+    fork: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a3 3 0 0 0 6 0V2M6 2v20M21 15V2a5 5 0 0 0-3 5v6h3v9"/></svg>',
+    ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>',
   };
 
   // ---- State -------------------------------------------------------------
   const today = new Date();
   const state = {
+    section: "events",                // "events" | "restaurants"
     year: today.getFullYear(),
     month: today.getMonth(),          // 0-indexed
     view: "calendar",                 // "calendar" | "list"
-    active: new Set(Object.keys(LEX_CATEGORIES)),  // active category filters
+    active: new Set(Object.keys(LEX_CATEGORIES)),  // active event-category filters
+    activeCuisines: new Set(typeof LEX_CUISINES !== "undefined" ? Object.keys(LEX_CUISINES) : []),
   };
   // If the current month has no events but July 2026 does, open there on first load.
   (function seedInitialMonth() {
@@ -429,6 +434,82 @@
     }));
   }
 
+  // ---- Restaurants -------------------------------------------------------
+  function cuisineOf(key) { return LEX_CUISINES[key] || { label: key, color: "#888", emoji: "🍴" }; }
+
+  function mapsLink(r) {
+    return (r.url && r.url.trim())
+      ? r.url
+      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " Lexington KY")}`;
+  }
+
+  function renderCuisineFilters() {
+    const host = el("#cuisineFilters");
+    if (!host) return;
+    host.innerHTML = Object.entries(LEX_CUISINES).map(([key, c]) =>
+      `<button class="chip ${state.activeCuisines.has(key) ? "on" : ""}" style="--cat:${c.color}" data-cui="${key}">
+        <span class="dot"></span>${c.emoji} ${esc(c.label)}</button>`).join("")
+      + `<span class="filter-actions"><button data-cact="all">All</button><button data-cact="none">Clear</button></span>`;
+    host.querySelectorAll(".chip").forEach(ch => ch.addEventListener("click", () => {
+      const k = ch.dataset.cui;
+      state.activeCuisines.has(k) ? state.activeCuisines.delete(k) : state.activeCuisines.add(k);
+      renderCuisineFilters(); renderRestaurants();
+    }));
+    host.querySelectorAll("[data-cact]").forEach(b => b.addEventListener("click", () => {
+      state.activeCuisines = b.dataset.cact === "all" ? new Set(Object.keys(LEX_CUISINES)) : new Set();
+      renderCuisineFilters(); renderRestaurants();
+    }));
+  }
+
+  function renderRestaurants() {
+    const host = el("#restaurantGrid");
+    if (!host) return;
+    let html = "", shown = 0;
+    for (const key of Object.keys(LEX_CUISINES)) {
+      if (!state.activeCuisines.has(key)) continue;
+      const list = LEX_RESTAURANTS.filter(r => r.cuisine === key);
+      if (!list.length) continue;
+      const c = cuisineOf(key);
+      html += `<section class="rest-group" style="--cat:${c.color}">
+        <h3 class="rest-group-title"><span class="rg-emoji">${c.emoji}</span>${esc(c.label)}
+          <span class="rg-count">${list.length}</span></h3>
+        <div class="rest-cards">`;
+      for (const r of list) {
+        shown++;
+        html += `<a class="rcard" href="${esc(mapsLink(r))}" target="_blank" rel="noopener" style="--cat:${c.color}">
+          <div class="rcard-top">
+            <span class="rcard-name">${esc(r.name)}</span>
+            ${r.price ? `<span class="rcard-price">${esc(r.price)}</span>` : ""}
+          </div>
+          ${r.description ? `<p class="rcard-desc">${esc(r.description)}</p>` : ""}
+          <div class="rcard-foot">
+            ${r.area ? `<span class="rcard-area">${I.pin}${esc(r.area)}</span>` : "<span></span>"}
+            <span class="rcard-link">${r.url ? "Website" : "Map & hours"} ${I.ext}</span>
+          </div>
+        </a>`;
+      }
+      html += `</div></section>`;
+    }
+    host.innerHTML = shown ? html
+      : `<div class="empty-state"><div class="big">No restaurants match your filters</div><p>Turn a food type back on above.</p></div>`;
+  }
+
+  // ---- Section switch (Events vs Restaurants) ----------------------------
+  function setSection(sec) {
+    state.section = sec;
+    const isFood = sec === "restaurants";
+    el("#eventsSection").hidden = isFood;
+    el("#restaurantsSection").hidden = !isFood;
+    el("#navEvents").classList.toggle("active", !isFood);
+    el("#navFood").classList.toggle("active", isFood);
+    el("#btnExport").style.display = isFood ? "none" : "";  // export is events-only
+    el("#leadText").textContent = isFood
+      ? "A hand-picked guide to eating and drinking well in Lexington — grouped by the kind of food you're craving."
+      : "Your monthly guide to what's happening around Lexington — live music, festivals, comedy, community gatherings and more. Tap any event for details, times and tickets.";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (isFood) { renderCuisineFilters(); renderRestaurants(); }
+  }
+
   // ---- Theme -------------------------------------------------------------
   function initTheme() {
     const saved = localStorage.getItem("lex-theme");
@@ -468,6 +549,8 @@
     el("#btnToday").addEventListener("click", () => { state.year = today.getFullYear(); state.month = today.getMonth(); render(); });
     el("#btnCal").addEventListener("click", () => { state.view = "calendar"; render(); });
     el("#btnList").addEventListener("click", () => { state.view = "list"; render(); });
+    el("#navEvents").addEventListener("click", () => setSection("events"));
+    el("#navFood").addEventListener("click", () => setSection("restaurants"));
     el("#overlay").addEventListener("click", (e) => { if (e.target.id === "overlay") closeModal(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 
@@ -478,6 +561,8 @@
     el("#btnCal").innerHTML = I.grid + `Calendar`;
     el("#btnList").innerHTML = I.list + `List`;
     el("#btnToday").textContent = "Today";
+    el("#navEvents").innerHTML = I.cal2 + `Events`;
+    el("#navFood").innerHTML = I.fork + `Restaurants`;
 
     initTheme();
     renderFilters();

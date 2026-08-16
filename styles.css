@@ -287,8 +287,58 @@ footer.site { margin-top: 56px; border-top: 1px solid var(--border); padding: 30
 .sources a:hover { color: var(--primary); border-color: color-mix(in srgb, var(--primary) 45%, var(--border)); transform: translateY(-1px); }
 .foot-note { margin-top: 24px; font-size: 12px; color: var(--text-muted); }
 
+/* ---------------------------------------------------------------- SECTION NAV */
+.sectionnav {
+  display: inline-flex; gap: 6px; margin: 6px 0 24px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 999px; padding: 5px;
+}
+.sectionnav button {
+  border: none; background: transparent; color: var(--text-muted);
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  padding: 9px 20px; border-radius: 999px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px; transition: .15s;
+}
+.sectionnav button.active { background: var(--surface); color: var(--primary); box-shadow: var(--shadow); }
+.sectionnav svg { width: 17px; height: 17px; }
+
+/* ---------------------------------------------------------------- RESTAURANTS */
+.rest-toolbar { margin-bottom: 22px; }
+.rest-group { margin-bottom: 32px; }
+.rest-group-title {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 2px solid color-mix(in srgb, var(--cat) 38%, var(--border));
+}
+.rg-emoji { font-size: 20px; line-height: 1; }
+.rg-count {
+  margin-left: auto; font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  color: var(--cat); background: color-mix(in srgb, var(--cat) 14%, var(--surface));
+  padding: 3px 10px; border-radius: 999px;
+}
+.rest-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 14px; }
+.rcard {
+  display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--cat);
+  border-radius: var(--radius-sm); padding: 15px 16px;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .15s;
+}
+.rcard:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.rcard-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.rcard-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; line-height: 1.15; }
+.rcard-price { font-size: 13px; font-weight: 700; color: var(--cat); white-space: nowrap; }
+.rcard-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin: 0; flex: 1; }
+.rcard-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 2px; }
+.rcard-area { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--text-muted); min-width: 0; }
+.rcard-area svg { width: 13px; height: 13px; flex-shrink: 0; }
+.rcard-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--cat); white-space: nowrap; }
+.rcard-link svg { width: 13px; height: 13px; }
+
 /* ---------------------------------------------------------------- RESPONSIVE */
 @media (max-width: 720px) {
+  .sectionnav { display: flex; width: 100%; }
+  .sectionnav button { flex: 1; justify-content: center; }
   .brand .tag { display: none; }
   .header-actions .btn span { display: none; }
   .header-actions .btn { padding: 9px; }
