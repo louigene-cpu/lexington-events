@@ -230,36 +230,36 @@ const LEX_RESTAURANTS = [
   {
     name: "Frank & Dino's",
     cuisine: "ITALIAN",
-    area: "",
+    area: "Northside (Downtown)",
     price: "$$",
     description: "Cozy Italian-American spot for red-sauce classics, pasta, and cocktails.",
-    url: ""
+    url: "https://frankanddinos.com/"
   },
 
   // ---- ASIAN ----
   {
     name: "Arirang",
     cuisine: "ASIAN",
-    area: "",
+    area: "Mt. Tabor Road",
     price: "$$",
     description: "Korean barbecue and comfort classics — tabletop bulgogi, bibimbap, and hot stone bowls.",
-    url: ""
+    url: "https://www.arirangky.com/"
   },
   {
     name: "Umami Ramen & Grill",
     cuisine: "ASIAN",
-    area: "",
+    area: "Chevy Chase",
     price: "$$",
     description: "Rich, slurp-worthy ramen bowls alongside Japanese grill plates and small bites.",
-    url: ""
+    url: "https://umamilex.com/"
   },
   {
     name: "Toku Revolving Sushi",
     cuisine: "ASIAN",
-    area: "",
+    area: "Nicholasville Road",
     price: "$$",
     description: "Conveyor-belt sushi — plates glide by and you grab what looks good. A fun, unique dinner out.",
-    url: ""
+    url: "https://tokusushibar.com/"
   },
 
   // ---- LATIN AMERICAN ----
@@ -284,15 +284,15 @@ const LEX_RESTAURANTS = [
   {
     name: "Nefertiti",
     cuisine: "MEDITERRANEAN",
-    area: "",
+    area: "Winchester Rd (Eastland)",
     price: "$$",
     description: "Mediterranean and Middle Eastern plates — shawarma, kebabs, hummus, and falafel.",
-    url: ""
+    url: "https://nefertitionline.com/"
   },
   {
     name: "Le Gourmet",
     cuisine: "MEDITERRANEAN",
-    area: "",
+    area: "South Broadway",
     price: "$$",
     description: "Authentic Haitian home cooking — griot, rice and beans, and bold Caribbean flavors.",
     url: ""
@@ -310,34 +310,34 @@ const LEX_RESTAURANTS = [
   {
     name: "The Ketch",
     cuisine: "SEAFOOD",
-    area: "",
+    area: "Regency Rd (Southland)",
     price: "$$",
     description: "Fresh fish, oysters, and seafood done simply at this local seafood market and grill.",
-    url: ""
+    url: "https://www.ketchseafoodlex.com/"
   },
   {
     name: "Shaking Seafood & Wings",
     cuisine: "SEAFOOD",
-    area: "",
+    area: "Hamburg area",
     price: "$$",
     description: "Cajun-style seafood boils served by the bag, plus a big wing lineup.",
-    url: ""
+    url: "https://shakingseafoodlexington.com/"
   },
   {
     name: "Storming Crab",
     cuisine: "SEAFOOD",
-    area: "",
+    area: "Nicholasville Road",
     price: "$$$",
     description: "Louisiana-style seafood boils — crab, crawfish, and shrimp by the bag with Cajun sauces.",
     url: ""
   },
   {
-    name: "Wyng King",
+    name: "Wing KYng",
     cuisine: "SEAFOOD",
-    area: "",
+    area: "Greyline Station",
     price: "$$",
     description: "Wings every which way with a deep bench of sauces and comfort sides.",
-    url: ""
+    url: "https://wingkyng.com/"
   },
 
   // ---- BREAKFAST & COFFEE ----
@@ -352,18 +352,18 @@ const LEX_RESTAURANTS = [
   {
     name: "Grounded All-Day Cafe",
     cuisine: "BREAKFAST",
-    area: "",
+    area: "Meadowthorpe",
     price: "$",
     description: "Easygoing all-day café for coffee, breakfast, and fresh, healthy-leaning lunch.",
-    url: ""
+    url: "https://groundedalldaycafe.com/"
   },
   {
     name: "Brevedé Coffee",
     cuisine: "BREAKFAST",
-    area: "",
+    area: "Distillery District & Chevy Chase",
     price: "$",
     description: "Specialty coffee and espresso drinks from a local roaster.",
-    url: ""
+    url: "https://www.brevedecoffee.com/"
   },
   {
     name: "North Lime Coffee & Donuts",
