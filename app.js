@@ -99,6 +99,41 @@
 
   function catOf(key) { return LEX_CATEGORIES[key] || { label: key, color: "#888" }; }
 
+  // ---- Holidays ----------------------------------------------------------
+  // Nth weekday of a month (weekday 0=Sun..6=Sat; nth 1..4 or -1 for "last").
+  function nthWeekday(year, month0, weekday, nth) {
+    if (nth > 0) {
+      const first = new Date(year, month0, 1).getDay();
+      return 1 + ((weekday - first + 7) % 7) + (nth - 1) * 7;
+    }
+    const dim = new Date(year, month0 + 1, 0).getDate();
+    const last = new Date(year, month0, dim).getDay();
+    return dim - ((last - weekday + 7) % 7);
+  }
+  // Gregorian Easter (returns {month:1-indexed, day}).
+  function easterDate(year) {
+    const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day = ((h + l - 7 * m + 114) % 31) + 1;
+    return { month, day };
+  }
+  // Map<day-of-month, [{name, emoji}]> for the given month.
+  function holidaysForMonth(year, month0) {
+    const map = new Map();
+    if (typeof LEX_HOLIDAYS === "undefined") return map;
+    const add = (day, h) => { if (!map.has(day)) map.set(day, []); map.get(day).push({ name: h.name, emoji: h.emoji }); };
+    for (const h of LEX_HOLIDAYS) {
+      if (h.easter) { const e = easterDate(year); if (e.month === month0 + 1) add(e.day, h); }
+      else if (h.day != null) { if (h.month === month0 + 1) add(h.day, h); }
+      else if (h.weekday != null && h.month === month0 + 1) add(nthWeekday(year, month0, h.weekday, h.nth), h);
+    }
+    return map;
+  }
+
   // Date-range formatting helpers for multi-day events.
   function longRange(sIso, eIso) {
     const s = parseISO(sIso), e = parseISO(eIso);
@@ -158,8 +193,14 @@
     renderMultiBanner();
 
     const host = el("#viewHost");
-    if (total === 0) { host.innerHTML = emptyState(); return; }
-    host.innerHTML = state.view === "calendar" ? renderCalendar() : renderAgenda();
+    if (state.view === "calendar") {
+      // The month grid always renders (it shows holidays and empty days too).
+      host.innerHTML = renderCalendar();
+    } else {
+      const hasHolidays = holidaysForMonth(state.year, state.month).size > 0;
+      if (total === 0 && !hasHolidays) { host.innerHTML = emptyState(); return; }
+      host.innerHTML = renderAgenda();
+    }
     wireEventClicks();
   }
 
@@ -196,6 +237,7 @@
 
   function renderCalendar() {
     const byDay = filteredByDay(state.year, state.month);
+    const hols = holidaysForMonth(state.year, state.month);
     const firstDow = new Date(state.year, state.month, 1).getDay();
     const daysInMonth = new Date(state.year, state.month + 1, 0).getDate();
     const isCurMonth = state.year === today.getFullYear() && state.month === today.getMonth();
@@ -205,12 +247,18 @@
     for (let i = 0; i < firstDow; i++) cells += `<div class="cell empty"></div>`;
     for (let d = 1; d <= daysInMonth; d++) {
       const list = byDay.get(d) || [];
+      const dayHols = hols.get(d) || [];
       const isToday = isCurMonth && d === today.getDate();
       let inner = `<span class="num">${d}</span>`;
+      if (dayHols.length) {
+        inner += `<div class="holiday-tag">` +
+          dayHols.map(h => `<span class="hol" title="${esc(h.name)}">${h.emoji} <span class="hol-name">${esc(h.name)}</span></span>`).join("") +
+          `</div>`;
+      }
       if (list.length) {
         inner += `<div class="evt-list">`;
-        // Cap at 4 rows total so every cell stays the same height.
-        const MAX_ROWS = 4;
+        // A holiday label takes one row, so cap events at 3 that day, else 4 — cells stay uniform.
+        const MAX_ROWS = dayHols.length ? 3 : 4;
         const overflow = list.length > MAX_ROWS;
         const shown = overflow ? list.slice(0, MAX_ROWS - 1) : list;
         for (const occ of shown) {
@@ -223,25 +271,31 @@
         }
         inner += `</div>`;
       }
-      cells += `<div class="cell ${isToday ? "today" : ""}">${inner}</div>`;
+      cells += `<div class="cell ${isToday ? "today" : ""}${dayHols.length ? " has-holiday" : ""}">${inner}</div>`;
     }
     return `<div class="calendar">${head}<div class="cal-grid">${cells}</div></div>`;
   }
 
   function renderAgenda() {
     const byDay = filteredByDay(state.year, state.month, true);
-    const days = [...byDay.keys()].sort((a,b) => a - b);
+    const hols = holidaysForMonth(state.year, state.month);
+    const days = [...new Set([...byDay.keys(), ...hols.keys()])].sort((a,b) => a - b);
     const isCurMonth = state.year === today.getFullYear() && state.month === today.getMonth();
     let html = `<div class="agenda">`;
     for (const d of days) {
       const dow = WEEKDAYS[new Date(state.year, state.month, d).getDay()];
       const isToday = isCurMonth && d === today.getDate();
+      const dayHols = hols.get(d) || [];
       html += `<div class="agenda-day">
         <div class="agenda-date ${isToday ? "is-today" : ""}">
           <div class="dow">${dow.slice(0,3)}</div><div class="dnum">${d}</div>
         </div>
         <div class="agenda-cards">`;
-      for (const occ of byDay.get(d)) {
+      if (dayHols.length) {
+        html += `<div class="agenda-holiday">` +
+          dayHols.map(h => `<span>${h.emoji} ${esc(h.name)}</span>`).join("") + `</div>`;
+      }
+      for (const occ of (byDay.get(d) || [])) {
         const c = catOf(occ.event.category);
         const badge = occ.isMulti ? `<span class="badge-multi">Week-long</span>`
                     : occ.isRecurring ? `<span class="badge-recurring">Weekly</span>` : "";

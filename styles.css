@@ -203,6 +203,26 @@ header.site {
   overflow: hidden; transition: transform .12s ease, box-shadow .12s ease;
 }
 .evt:hover { transform: translateY(-1px) scale(1.02); box-shadow: var(--shadow); }
+/* Holidays: subtle, non-clickable date markers (distinct from event chips) */
+.cell.has-holiday { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.cell.today.has-holiday { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.holiday-tag { display: flex; flex-direction: column; gap: 2px; margin-bottom: 4px; }
+.holiday-tag .hol {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 10.5px; font-weight: 600; line-height: 1.25;
+  color: var(--accent-deep); letter-spacing: .01em;
+}
+.dark .holiday-tag .hol { color: var(--accent); }
+.holiday-tag .hol-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.agenda-holiday { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2px; }
+.agenda-holiday span {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12.5px; font-weight: 600; color: var(--accent-deep);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  padding: 4px 10px; border-radius: 999px;
+}
+.dark .agenda-holiday span { color: var(--accent); }
 /* week-long event chip: reads as an ongoing span */
 .evt-multi { background: color-mix(in srgb, var(--cat) 22%, var(--surface)); border-style: dashed; font-weight: 600; }
 .evt-multi .evt-title::before { content: "↔ "; opacity: .7; }
@@ -346,6 +366,8 @@ footer.site { margin-top: 56px; border-top: 1px solid var(--border); padding: 30
   .cell .num { width: 20px; height: 20px; font-size: 11px; }
   .evt .evt-title { display: none; }
   .evt { justify-content: center; padding: 5px; }
+  .holiday-tag .hol-name { display: none; }
+  .holiday-tag .hol { justify-content: center; font-size: 12px; }
   .evt::after { content: ""; }
   .agenda-day { grid-template-columns: 60px 1fr; gap: 12px; }
   .agenda-date .dnum { font-size: 26px; }
