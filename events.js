@@ -545,4 +545,198 @@ const LEX_EVENTS = [
     description: "Free neighborhood concert in the Eastside Evenings series at Charles Young Park.",
     url: "https://www.lexingtonky.gov/playing/arts-events/concerts"
   },
+
+  /* ---- ONE-TIME EVENTS: SEPTEMBER 2026 ---- */
+
+  {
+    title: "Roots and Heritage Festival",
+    category: "FESTIVALS",
+    startDate: "2026-09-11",
+    endDate: "2026-09-13",
+    time: "All weekend",
+    venue: "Downtown / East End",
+    description: "Lexington's long-running celebration of African American culture - parade, live music, food, and a street festival.",
+    url: ""
+  },
+  {
+    title: "Seniors Got Talent",
+    category: "COMMUNITY",
+    date: "2026-09-01",
+    time: "7:30 PM",
+    venue: "Lexington Opera House",
+    description: "Talent showcase for performers 60+ competing for a $1,000 prize.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "SCFA Expansive Sounds #10",
+    category: "LIVE_MUSIC",
+    date: "2026-09-03",
+    time: "",
+    venue: "Singletary Center for the Arts",
+    description: "Free jazz-trio performance built on improvisation.",
+    url: ""
+  },
+  {
+    title: "Patton Oswalt",
+    category: "COMEDY",
+    date: "2026-09-04",
+    time: "8:00 PM",
+    venue: "Lexington Opera House",
+    description: "Stand-up from the Emmy-winning comedian and actor.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "Blue City Ball",
+    category: "LIVE_MUSIC",
+    date: "2026-09-04",
+    time: "Doors 8:00 PM",
+    venue: "The Burl",
+    description: "Local showcase spanning blues, hip-hop, and rock.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "Studio Players: \"Lucky Stiff\"",
+    category: "ARTS_CULTURE",
+    date: "2026-09-04",
+    time: "",
+    venue: "The Carriage House",
+    description: "Offbeat musical comedy about an inheritance and a corpse. Runs select dates Sept 3-20.",
+    url: "https://studioplayers.org/"
+  },
+  {
+    title: "Expansion Fest",
+    category: "FESTIVALS",
+    date: "2026-09-05",
+    time: "",
+    venue: "The Burl",
+    description: "Psychedelic-rock festival with garage and experimental sounds, feat. Frankie and the Witch Fingers.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "Robert Lester Folsom",
+    category: "LIVE_MUSIC",
+    date: "2026-09-09",
+    time: "Doors 8:00 PM",
+    venue: "The Burl",
+    description: "Singer-songwriter performing folk and psychedelic pop.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "Leslie Jones: I'm Hot Tour",
+    category: "COMEDY",
+    date: "2026-09-11",
+    time: "8:00 PM",
+    venue: "Lexington Opera House",
+    description: "Stand-up from the SNL alum and comedian.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "The Fab Four",
+    category: "LIVE_MUSIC",
+    date: "2026-09-12",
+    time: "7:30 PM",
+    venue: "Lexington Opera House",
+    description: "Emmy-winning Beatles tribute celebrating the 'Help!' album.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "Lexington Humane Society Doggie Paddle",
+    category: "COMMUNITY",
+    date: "2026-09-12",
+    time: "",
+    venue: "Southland Aquatic Center",
+    description: "Pool-party fundraiser for dogs and their people, benefiting the Lexington Humane Society.",
+    url: "https://www.lexingtonhumanesociety.org/"
+  },
+  {
+    title: "Leftover Salmon",
+    category: "LIVE_MUSIC",
+    date: "2026-09-17",
+    time: "Doors 8:00 PM",
+    venue: "The Burl",
+    description: "Jamgrass veterans blending bluegrass with rock and funk.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "Always Loretta",
+    category: "LIVE_MUSIC",
+    date: "2026-09-17",
+    time: "7:30 PM",
+    venue: "Lexington Opera House",
+    description: "Loretta Lynn tribute featuring the country classics.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "Lexington Philharmonic Opening Night",
+    category: "ARTS_CULTURE",
+    date: "2026-09-18",
+    time: "7:30 PM",
+    venue: "Singletary Center for the Arts",
+    description: "LexPhil's 65th-season opener - Elgar's Cello Concerto and Dvorak's 'New World' Symphony.",
+    url: "https://lexphil.org/"
+  },
+  {
+    title: "The Emo Night Tour",
+    category: "LIVE_MUSIC",
+    date: "2026-09-18",
+    time: "Doors 8:00 PM",
+    venue: "The Burl",
+    description: "Dance party of 2000s emo and pop-punk anthems.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "Vinyl Richie presents Video Age Live!",
+    category: "LIVE_MUSIC",
+    date: "2026-09-19",
+    time: "Doors 8:00 PM",
+    venue: "The Burl",
+    description: "MTV-era tribute spanning 1981-2009 music videos.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "International Book Project: A Novel Evening",
+    category: "COMMUNITY",
+    date: "2026-09-19",
+    time: "",
+    venue: "ArtsPlace",
+    description: "Fundraiser celebrating 60 years of literacy work - games, silent auction, and cocktails.",
+    url: ""
+  },
+  {
+    title: "Pallbearer",
+    category: "LIVE_MUSIC",
+    date: "2026-09-25",
+    time: "Doors 8:00 PM",
+    venue: "The Burl",
+    description: "Melodic, atmospheric doom metal.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "Brit Floyd: The Moon, The Wall & Beyond",
+    category: "LIVE_MUSIC",
+    date: "2026-09-26",
+    time: "8:00 PM",
+    venue: "Gatton Park",
+    description: "Pink Floyd tribute with a full theatrical production.",
+    url: "https://gattonpark.org/events/"
+  },
+  {
+    title: "Origin Jazz Series: Charlie Hunter Trio",
+    category: "LIVE_MUSIC",
+    date: "2026-09-27",
+    time: "",
+    venue: "The Apiary",
+    description: "Grammy-nominated guitarist on his innovative 7-string.",
+    url: ""
+  },
+  {
+    title: "Wynonna Judd: Kentucky Queen Tour",
+    category: "LIVE_MUSIC",
+    date: "2026-09-30",
+    time: "8:00 PM",
+    venue: "Lexington Opera House",
+    description: "Career-spanning performance from the Country Music Hall of Famer.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+
 ];
