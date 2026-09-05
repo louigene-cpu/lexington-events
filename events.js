@@ -739,4 +739,160 @@ const LEX_EVENTS = [
     url: "https://lexingtonoperahouse.com/"
   },
 
+  /* ---- ONE-TIME EVENTS: OCTOBER 2026 ---- */
+
+  {
+    title: "Keeneland Fall Meet",
+    category: "FESTIVALS",
+    startDate: "2026-10-02",
+    endDate: "2026-10-24",
+    time: "",
+    venue: "Keeneland",
+    description: "Historic racetrack's fall race meet - 22 stakes worth $10.7 million, no racing Mondays/Tuesdays.",
+    url: "https://www.keeneland.com/events/fall-meet"
+  },
+  {
+    title: "Fall Stars Weekend at Keeneland",
+    category: "FESTIVALS",
+    startDate: "2026-10-02",
+    endDate: "2026-10-04",
+    time: "",
+    venue: "Keeneland",
+    description: "Opening weekend of the Fall Meet - 11 stakes races worth $6.35 million, including three Breeders' Cup 'Win and You're In' events.",
+    url: "https://www.keeneland.com/events/fall-meet"
+  },
+  {
+    title: "Jamie Lissow",
+    category: "COMEDY",
+    startDate: "2026-10-01",
+    endDate: "2026-10-03",
+    time: "",
+    venue: "Comedy Off Broadway",
+    description: "Stand-up run from the touring comedian and TV writer.",
+    url: "https://www.comedyoffbroadway.com/"
+  },
+  {
+    title: "Kenny Wayne Shepherd Band",
+    category: "LIVE_MUSIC",
+    date: "2026-10-09",
+    time: "8:00 PM",
+    venue: "Lexington Opera House",
+    description: "Blues-rock guitarist and Grammy nominee bringing his full band to the Opera House.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "Rappahannock County",
+    category: "ARTS_CULTURE",
+    startDate: "2026-10-16",
+    endDate: "2026-10-18",
+    time: "",
+    venue: "Lexington Opera House",
+    description: "UK Opera Theatre presents a song cycle by Pulitzer winner Mark Campbell and composer Ricky Ian Gordon on the Civil War's impact on Virginians.",
+    url: "https://www.centralbankcenter.com/news/detail/uk-opera-theatre-presents-rappahannock-county-at-the-lexington-opera-house-october-1618-2026"
+  },
+  {
+    title: "OVG Concert Series: Tommy James & The Shondells with Herman's Hermits",
+    category: "LIVE_MUSIC",
+    date: "2026-10-17",
+    time: "6:00 PM",
+    venue: "Gatton Park",
+    description: "Double bill of 1960s pop-rock hitmakers, featuring 'Crimson & Clover' and 'Mrs. Brown You've Got a Lovely Daughter.'",
+    url: "https://gattonpark.org/events/ovgconcerts/"
+  },
+  {
+    title: "Lexington Philharmonic: Heroes & Villains - Symphonic Movie Music",
+    category: "ARTS_CULTURE",
+    date: "2026-10-19",
+    time: "7:00 PM",
+    venue: "Singletary Center for the Arts",
+    description: "LexPhil performs iconic film scores; additional performances Oct. 24 and 25.",
+    url: "https://lexphil.org/"
+  },
+  {
+    title: "ScareFest Weekend",
+    category: "FESTIVALS",
+    startDate: "2026-10-23",
+    endDate: "2026-10-25",
+    time: "",
+    venue: "Central Bank Center",
+    description: "Kentucky's largest horror convention - celebrity guests, panels, workshops, screenings, and a dedicated film festival.",
+    url: "https://scarefestweekend.com/"
+  },
+  {
+    title: "Breeders' Cup Festival: Purple Up! Lexington",
+    category: "FESTIVALS",
+    startDate: "2026-10-25",
+    endDate: "2026-10-31",
+    time: "",
+    venue: "Citywide",
+    description: "Week-long celebration ahead of the Breeders' Cup World Championships - live music, hospitality, and family events across Lexington.",
+    url: "https://www.breederscupfestival.com/"
+  },
+  {
+    title: "Halloween Variety Show & Festival",
+    category: "COMMUNITY",
+    date: "2026-10-25",
+    time: "4:30 PM",
+    venue: "Robert F. Stephens Courthouse Plaza",
+    description: "Free Halloween celebration with dance and band performances, a DJ, and the annual Halloween Parade - a USA Today Top 10 Halloween destination.",
+    url: "https://www.lexingtonky.gov/playing/arts-events/fall-events-programs/halloween-festival-thriller-parade"
+  },
+  {
+    title: "Purple in the Park",
+    category: "COMMUNITY",
+    date: "2026-10-25",
+    time: "1:00 PM – 6:00 PM",
+    venue: "Gatton Park",
+    description: "Free, family-friendly Breeders' Cup Festival kickoff with horse meet-and-greets, jockey silk photos, face-painting, live music, and food trucks.",
+    url: "https://www.breederscupfestival.com/"
+  },
+  {
+    title: "Sunrise Trackside",
+    category: "COMMUNITY",
+    startDate: "2026-10-26",
+    endDate: "2026-10-29",
+    time: "7:00 AM – 10:00 AM",
+    venue: "Keeneland",
+    description: "Breeders' Cup Festival mornings - watch entrants train on the main track over breakfast.",
+    url: "https://www.breederscupfestival.com/"
+  },
+  {
+    title: "The Purple Xperience",
+    category: "LIVE_MUSIC",
+    date: "2026-10-29",
+    time: "",
+    venue: "The Burl",
+    description: "Free outdoor Breeders' Cup Festival show from the acclaimed Minneapolis-based Prince tribute band.",
+    url: "https://theburlky.com/"
+  },
+  {
+    title: "Sesame Street Live! Elmo's Got the Moves",
+    category: "ARTS_CULTURE",
+    date: "2026-10-29",
+    time: "6:00 PM",
+    venue: "Lexington Opera House",
+    description: "Touring stage show featuring Elmo and friends in a dance-themed family production.",
+    url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "Breeders' Cup World Championships",
+    category: "FESTIVALS",
+    startDate: "2026-10-30",
+    endDate: "2026-10-31",
+    time: "",
+    venue: "Keeneland",
+    description: "Thoroughbred racing's world championships return to Keeneland - two days of Breeders' Cup stakes racing.",
+    url: "https://www.keeneland.com/events/breeders-cup-world-championships"
+  },
+  {
+    title: "Gatton Park Watch Party",
+    category: "COMMUNITY",
+    startDate: "2026-10-30",
+    endDate: "2026-10-31",
+    time: "",
+    venue: "Gatton Park",
+    description: "City's biggest Breeders' Cup watch party - food trucks, live music, and equine-themed fun from the first race to the last.",
+    url: "https://www.breederscupfestival.com/"
+  }
+
 ];
