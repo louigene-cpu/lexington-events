@@ -73,15 +73,6 @@ const LEX_EVENTS = [
     url: "https://mirrortwinbrewing.com/"
   },
   {
-    title: "Comedy Open Mic Night",
-    category: "COMEDY",
-    recurring: "Thursday",
-    time: "7:00 PM – 10:00 PM",
-    venue: "The Laughing Skull Comedy Club",
-    description: "Weekly open mic. Watch local comedians try new material — or sign up and take the stage yourself.",
-    url: ""
-  },
-  {
     title: "Open Jam",
     category: "LIVE_MUSIC",
     recurring: "Thursday",
@@ -345,13 +336,13 @@ const LEX_EVENTS = [
     url: "https://www.lexingtonky.gov/playing/arts-events/concerts/summer-nights-suburbia"
   },
   {
-    title: "The Twigginburys",
+    title: "Meet the Artists: Equestrian Series Wine Release",
     category: "LIVE_MUSIC",
-    date: "2026-07-25",
-    time: "6:00 PM",
-    venue: "Equus Run Vineyards",
-    description: "Live concert on the lawn at Equus Run Vineyards. Bring a chair and enjoy Kentucky wine.",
-    url: "https://equusrunvineyards.com/"
+    date: "2026-07-26",
+    time: "4:00 PM – 7:00 PM",
+    venue: "Talon Winery Lexington",
+    description: "Live music and a meet-and-greet with the artists behind Talon's new Equestrian Series wine labels.",
+    url: "https://www.talonwine.com/events/"
   },
   {
     title: "Big Band & Jazz: RPM Quintet",
@@ -411,22 +402,22 @@ const LEX_EVENTS = [
     url: "https://www.visitlex.com/things-to-do/calendar-of-events/"
   },
   {
-    title: "Shaker Village Craft Fair (Day 1)",
+    title: "Woodland Art Fair (Day 1)",
     category: "ARTS_CULTURE",
-    date: "2026-08-01",
-    time: "10:00 AM – 5:00 PM",
-    venue: "Shaker Village of Pleasant Hill",
-    description: "Juried craft fair: pottery, jewelry, glassware, woven rugs, basketry, leather goods, needlecraft, and floral design.",
-    url: "https://shakervillageky.org/"
+    date: "2026-08-15",
+    time: "10:00 AM – 6:00 PM",
+    venue: "Woodland Park",
+    description: "Lexington Art League's juried fair - over 180 artists and craftspeople in ceramics, wood, jewelry, painting, metal, fiber, and photography, plus food trucks and live entertainment.",
+    url: "https://www.woodlandartfair.org/"
   },
   {
-    title: "Shaker Village Craft Fair (Day 2)",
+    title: "Woodland Art Fair (Day 2)",
     category: "ARTS_CULTURE",
-    date: "2026-08-02",
+    date: "2026-08-16",
     time: "10:00 AM – 5:00 PM",
-    venue: "Shaker Village of Pleasant Hill",
-    description: "Day two of the Shaker Village Craft Fair — a wide assortment of handmade crafts at Pleasant Hill.",
-    url: "https://shakervillageky.org/"
+    venue: "Woodland Park",
+    description: "Day two of the Woodland Art Fair - 180+ artists and craftspeople, food trucks, local breweries and vineyards.",
+    url: "https://www.woodlandartfair.org/"
   },
   {
     title: "Big Band & Jazz: Miles Osland Little Big Band",
@@ -584,6 +575,16 @@ const LEX_EVENTS = [
     venue: "Lexington Opera House",
     description: "Stand-up from the Emmy-winning comedian and actor.",
     url: "https://lexingtonoperahouse.com/"
+  },
+  {
+    title: "Chris Kattan",
+    category: "COMEDY",
+    startDate: "2026-09-03",
+    endDate: "2026-09-05",
+    time: "",
+    venue: "Comedy Off Broadway",
+    description: "Multi-night stand-up run from the former Saturday Night Live cast member.",
+    url: "https://www.comedyoffbroadway.com/"
   },
   {
     title: "Blue City Ball",
